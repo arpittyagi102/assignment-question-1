@@ -19,8 +19,8 @@ const List = ({ rows, timestamps, currency}) => {
         </ListHeader>
       </thead>
       <tbody>
-        {rows.map((row) => (
-          <ListRow>
+        {rows.map((row,key) => (
+          <ListRow key={key}>
             <ListRowCell>{row["&id"]}</ListRowCell>
             <ListRowCell>{row.executionDetails.buySellIndicator}</ListRowCell>
             <ListRowCell>{row.executionDetails.orderStatus}</ListRowCell>
