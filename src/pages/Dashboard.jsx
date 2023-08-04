@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Data
 import mockData from "../assets/data.json";
@@ -17,8 +17,15 @@ import Card from "../component/card/Card";
 const Dashboard = () => {
   const [currency, setCurrency] = useState("EUR");
   const [searchText, setSearchText] = useState("");
+  const [filteredText, setFilteredText] = useState(mockData.results);
   const [selectedOrderDetails, setSelectedOrderDetails] = useState({});
   const [selectedOrderTimeStamps, setSelectedOrderTimeStamps] = useState({});
+
+  useEffect(()=>{
+    if(searchText)
+        setFilteredText(mockData.results.filter((item) => item['&id'].toLowerCase().includes(searchText.toLowerCase().trim())));
+
+  },[searchText])
 
   return (
     <div>
@@ -47,7 +54,7 @@ const Dashboard = () => {
             title="Selected Order Timestamps"
           />
         </div>
-        <List rows={mockData.results} timestamps={timestamps} currency={currency}/>
+        <List rows={filteredText} timestamps={timestamps} currency={currency} />
       </div>
     </div>
   );
