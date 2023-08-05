@@ -54,7 +54,13 @@ const Dashboard = () => {
             title="Selected Order Timestamps"
           />
         </div>
-        <List rows={filteredText} timestamps={timestamps} currency={currency} />
+        <List 
+            rows={filteredText} 
+            timestamps={timestamps} 
+            currency={currency} 
+            setSelectedOrderTimeStamps={setSelectedOrderTimeStamps}
+            setSelectedOrderDetails={setSelectedOrderDetails}
+        />
       </div>
     </div>
   );
